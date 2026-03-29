@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributed Systems - Complete Practice | Chapters 1 & 2 All Questions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2fa;
+            margin: 0;
+            padding: 24px 20px;
+            color: #1a2c3e;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.2);
+            overflow: hidden;
+            padding: 24px 30px 36px 30px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 6px 0;
+            color: #0f3b5c;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+        .badge {
+            background: #e9edf2;
+            padding: 5px 14px;
+            border-radius: 60px;
+            font-weight: 600;
+        }
+        .subhead {
+            border-left: 5px solid #2c7da0;
+            padding-left: 18px;
+            margin: 12px 0 25px 0;
+            color: #2c4e6e;
+            font-weight: 500;
+        }
+        .stats-panel {
+            background: #f1f6fc;
+            border-radius: 28px;
+            padding: 14px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            gap: 15px;
+        }
+        .score-box {
+            background: #1e4a6e;
+            color: white;
+            border-radius: 40px;
+            padding: 8px 24px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .progress-badge {
+            background: white;
+            border-radius: 30px;
+            padding: 6px 20px;
+            font-weight: 600;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .reset-btn, .check-all-btn {
+            border: none;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .reset-btn {
+            background: #cfdde8;
+            color: #1f496e;
+        }
+        .reset-btn:hover {
+            background: #bcccdb;
+            transform: scale(0.97);
+        }
+        .check-all-btn {
+            background: #2c7da0;
+            color: white;
+        }
+        .check-all-btn:hover {
+            background: #1f6482;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 30px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #cbdde9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section-title span {
+            background: #2c7da0;
+            color: white;
+            font-size: 1rem;
+            padding: 2px 12px;
+            border-radius: 60px;
+        }
+        .question-card {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            padding: 18px 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2edf2;
+            transition: 0.1s;
+        }
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 14px;
+            line-height: 1.4;
+            padding-right: 8px;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            background: #fafcff;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-weight: 500;
+            transition: 0.05s linear;
+            border: 1px solid #e2edf2;
+        }
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2c7da0;
+        }
+        .feedback {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            width: auto;
+        }
+        .feedback.correct {
+            background: #e0f5e6;
+            color: #1a6e46;
+            border-left: 4px solid #2b9348;
+        }
+        .feedback.wrong {
+            background: #ffe8e5;
+            color: #bc4742;
+            border-left: 4px solid #d9534f;
+        }
+        .feedback.neutral {
+            background: #f1f5f9;
+            color: #4b6a8b;
+        }
+        .summary-msg {
+            background: #e9f0f5;
+            border-radius: 28px;
+            padding: 12px 24px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        @media (max-width: 750px) {
+            .container { padding: 16px; }
+            .options label { padding: 4px 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>
+        📡 Distributed Systems 
+        <div class="badge-group">
+            <span class="badge">Chapter 1 + Chapter 2</span>
+            <span class="badge">Dr. Hatem Moharram</span>
+        </div>
+    </h1>
+    <div class="subhead">🎯 Complete Practice: True/False (Chapter 1: 30+ items) + True/False (Chapter 2: 71) + Multiple Choice (Chapter 2: 42) + Multiple Choice (Chapter 1: 46) — Total 190+ Questions</div>
+    
+    <div class="stats-panel">
+        <div class="score-box" id="totalScoreDisplay">📊 Total Score: 0 / 0</div>
+        <div class="progress-badge" id="totalAnsweredDisplay">📌 Answered: 0 / 0</div>
+        <button class="reset-btn" id="resetAllBtn">⟳ Reset All Answers</button>
+        <button class="check-all-btn" id="checkAllBtn">✔ Check All & Refresh Scores</button>
+    </div>
+    
+    <!-- TRUE/FALSE SECTION - CHAPTER 1 (from Solution sheet1) -->
+    <div class="section-title">
+        📘 TRUE / FALSE - CHAPTER 1 (Introduction & Transparency) <span id="tfCh1Count">0 questions</span>
+    </div>
+    <div id="tfCh1Container"></div>
+    
+    <!-- TRUE/FALSE SECTION - CHAPTER 2 (Hardware Concepts) -->
+    <div class="section-title">
+        🔍 TRUE / FALSE - CHAPTER 2 (Hardware Concepts) <span id="tfCh2Count">0 questions</span>
+    </div>
+    <div id="tfCh2Container"></div>
+    
+    <!-- Multiple Choice Chapter 2 (Hardware Concepts) -->
+    <div class="section-title">
+        🖥️ MULTIPLE CHOICE - CHAPTER 2 (Hardware Concepts) <span id="mcCh2Count">0 questions</span>
+    </div>
+    <div id="mcCh2Container"></div>
+    
+    <!-- Multiple Choice Chapter 1 (Distributed Systems Intro) -->
+    <div class="section-title">
+        🌐 MULTIPLE CHOICE - CHAPTER 1 (Introduction & Transparency) <span id="mcCh1Count">0 questions</span>
+    </div>
+    <div id="mcCh1Container"></div>
+    
+    <div class="footer-bar">
+        <div id="liveSummary" class="summary-msg">✨ Select answers. Each choice gives instant feedback. Use 'Check All' to refresh scores.</div>
+    </div>
+</div>
+
+<script>
+    // =============================================================
+    // 1. TRUE/FALSE DATA - CHAPTER 1 (from Solution sheet1 pages 5-7)
+    // Based on the provided solution sheet with corrections
+    // =============================================================
+    const tfCh1Data = [
+        { text: "A distributed system is defined as a collection of independent computers that appears to users as a single coherent system.", correctAnswer: true, hint: "Definition from Chapter 1." },
+        { text: "In a distributed system, it is easy to scale the system.", correctAnswer: true, hint: "Scalability is a key motivation." },
+        { text: "A primary motivation for distributed systems is resource sharing.", correctAnswer: true, hint: "Resource sharing is fundamental." },
+        { text: "A 'Digital Firm' refers to a firm with digitally enabled relationships and rapid sensing/response to changes.", correctAnswer: true, hint: "Digital firm definition." },
+        { text: "Middleware sits between higher-level applications and the local OS.", correctAnswer: true, hint: "Middleware layer position." },
+        { text: "A workflow information system used across departments is an example where users are unaware of how orders flow.", correctAnswer: true, hint: "Transparency example." },
+        { text: "The World Wide Web is described as a distributed system where documents appear to be served from a single server.", correctAnswer: false, hint: "False: Web appears from multiple servers, but unified interface." },
+        { text: "One of the goals for building a distributed system is transparency.", correctAnswer: true, hint: "Transparency is a key goal." },
+        { text: "Access transparency hides differences in data representation and access methods.", correctAnswer: true, hint: "Access transparency definition." },
+        { text: "Migration transparency hides that a resource may move to another location.", correctAnswer: true, hint: "Migration transparency." },
+        { text: "Replication transparency hides that a resource is replicated.", correctAnswer: true, hint: "Replication transparency." },
+        { text: "Concurrency transparency is about hiding that a resource is shared by several users.", correctAnswer: true, hint: "Concurrency transparency." },
+        { text: "Persistence transparency hides whether a resource is in memory or on disk.", correctAnswer: true, hint: "Persistence transparency." },
+        { text: "Open distributed systems emphasize proprietary protocols.", correctAnswer: false, hint: "False: Open systems emphasize standard, interoperable protocols." },
+        { text: "Interoperability means the ability to intermix components from different manufacturers.", correctAnswer: true, hint: "Interoperability definition." },
+        { text: "Portability describes an application's ability to execute on different distributed systems without modification.", correctAnswer: true, hint: "Portability definition." },
+        { text: "The document lists three primary scalability dimensions including size, geographical, and temporal.", correctAnswer: false, hint: "False: Dimensions are size, geographical, and administrative (not temporal)." },
+        { text: "In decentralized algorithms, each machine relies on global information about the system state.", correctAnswer: false, hint: "False: Relies on local information." },
+        { text: "Synchronous communication requires all parties to be online at the same time.", correctAnswer: true, hint: "Synchronous requires simultaneity." },
+        { text: "A drawback of replication and caching is that they can lead to data consistency problems.", correctAnswer: true, hint: "Consistency is a challenge." },
+        { text: "DNS-like distribution techniques help route requests efficiently by dividing a namespace into zones.", correctAnswer: true, hint: "DNS hierarchy." },
+        { text: "A technique to reduce overall communication is to minimize inter-node messaging.", correctAnswer: false, hint: "Reducing communication uses caching, replication, locality." },
+        { text: "Asynchronous communication allows a client to do other useful work while waiting for a reply.", correctAnswer: true, hint: "Async non-blocking." },
+        { text: "Distributing a DNS-like service across zones is illustrated by a hierarchical DNS with zone-specific servers.", correctAnswer: true, hint: "DNS zones." },
+        { text: "It is not necessary that a system supporting replication transparency should support location transparency as well.", correctAnswer: false, hint: "False: Replication transparency requires location transparency." },
+        { text: "Asynchronous communication is real time, and synchronous communication is time delayed.", correctAnswer: false, hint: "False: Opposite is true." },
+        { text: "As connectivity and sharing increase, security becomes more and more important.", correctAnswer: true, hint: "Security importance grows." },
+        { text: "Location transparency means hiding the differences in data representation and the way that resources can be accessed by users.", correctAnswer: false, hint: "False: That's access transparency." },
+        { text: "To hide replication from users, it is necessary that all replicas have the same name.", correctAnswer: true, hint: "Same name for replicas." },
+        { text: "It is not necessary that a system supporting replication transparency should support location transparency as well.", correctAnswer: false, hint: "False: Necessary." },
+        { text: "Masking failures is one of the hardest issues in distributed systems.", correctAnswer: true, hint: "Failure handling is hard." },
+        { text: "Asynchronous communication is a better solution for hiding communication latencies than reducing the overall communication.", correctAnswer: false, hint: "False: Both are techniques." },
+        { text: "Scalability problems often appear in the form of performance degradation.", correctAnswer: true, hint: "Performance degradation." },
+        { text: "Caching is a decision made by the client of a resource, and not by the owner of a resource.", correctAnswer: true, hint: "Client-side caching." },
+        { text: "Caching and replication lead to consistency problems.", correctAnswer: true, hint: "Consistency issues." },
+        { text: "In decentralized algorithms, there is no implicit assumption that a global clock exists.", correctAnswer: true, hint: "No global clock assumption." },
+        { text: "Local-area networks generally provide highly reliable communication facilities based on routing.", correctAnswer: false, hint: "False: Based on broadcasting." },
+        { text: "Replication decreases availability, helps to balance the load between components and hides much of the communication latency problems.", correctAnswer: false, hint: "False: Replication increases availability." },
+        { text: "Caching is a decision made by the server (the owner of a resource) of a resource, and not by the client requesting the resource.", correctAnswer: false, hint: "False: Caching is client decision." }
+    ];
+    
+    // =============================================================
+    // 2. TRUE/FALSE DATA - CHAPTER 2 (71 items from previous)
+    // =============================================================
+    const tfCh2Data = [
+        { text: "Asynchronous communication is real time, and synchronous communication is time delayed.", correctAnswer: false, hint: "Synchronous = real-time, Async = time-delayed." },
+        { text: "Sophisticated software is needed to build applications for heterogeneous multicomputers.", correctAnswer: true, hint: "Page 7 (pages-3.pdf)" },
+        { text: "As connectivity and sharing increase, security becomes more and more important.", correctAnswer: true, hint: "Page 6 (pages-9.pdf)" },
+        { text: "Asynchronous communication is a better solution for hiding communication latencies than reducing the overall communication.", correctAnswer: true, hint: "Async hides latency." },
+        { text: "Scalability problems often appear in the form of performance degradation.", correctAnswer: true, hint: "Page 9 (pages-2.pdf)" },
+        { text: "Caching is a decision made by the client of a resource, and not by the owner of a resource.", correctAnswer: true, hint: "Client-side caching typical." },
+        { text: "Caching and replication lead to consistency problems.", correctAnswer: true, hint: "Page 1 (pages-3.pdf)" },
+        { text: "In multicomputers, there is a single physical address space that is shared by all computers.", correctAnswer: false, hint: "Multiprocessors share address space." },
+        { text: "In multiprocessor systems, every CPU has its own private memory.", correctAnswer: false, hint: "Multiprocessors share memory." },
+        { text: "The problem with omega network is their limited scalability.", correctAnswer: false, hint: "Omega improves scalability; drawback = latency." },
+        { text: "The problem with bus-based multiprocessors is their limited scalability.", correctAnswer: true, hint: "Page 2 (pages-3.pdf)" },
+        { text: "The drawback of the bus-based multiprocessors is that there may be several switching stages between the CPU and memory.", correctAnswer: false, hint: "Bus has single bus." },
+        { text: "The drawback of the crossbar switch is that there may be several switching stages between the CPU and memory.", correctAnswer: false, hint: "Crossbar single-stage; cost n²." },
+        { text: "In switch-based multicomputer messages between the processors are broadcasted through an interconnection network.", correctAnswer: false, hint: "Switch-based uses routing." },
+        { text: "In bus-based systems multicomputer messages between the processors are routed through an interconnection network.", correctAnswer: false, hint: "Bus-based = broadcast." },
+        { text: "The functionality of distributed OSs is essentially the same as that of traditional operating systems for uniprocessor systems, except that they handle multiple CPUs.", correctAnswer: true, hint: "Page 4 (pages-4.pdf)" },
+        { text: "The use of semaphores can easily lead to unstructured code.", correctAnswer: true, hint: "Page 10 (pages-5.pdf)" },
+        { text: "Communication using message-passing facilities is much easier than accessing shared memory.", correctAnswer: false, hint: "Shared memory model is easier." },
+        { text: "The cost of transferring a page across a network is primarily determined by the amount of data that is transferred and not by the cost of setting up the transfer.", correctAnswer: false, hint: "Primarily setup cost." },
+        { text: "Network OSs make a serious attempt to realize full transparency.", correctAnswer: false, hint: "DOS aims for transparency." },
+        { text: "The middleware manages each individual node.", correctAnswer: false, hint: "Middleware sits atop NOS." },
+        { text: "Local-area networks generally provide highly reliable communication facilities based on routing.", correctAnswer: true, hint: "LANs reliable." },
+        { text: "In multicomputers, there is a single physical address space shared by all CPUs.", correctAnswer: false, hint: "Same as #8." },
+        { text: "In bus systems, Messages move along the wires, with an explicit switching decision made at each step to route the message along one of the outgoing wires.", correctAnswer: false, hint: "Describes switched systems." },
+        { text: "In switch-based multicomputer, messages between the processors are broadcasted through an interconnection network.", correctAnswer: false, hint: "Routing." },
+        { text: "COWs are simple and cheap.", correctAnswer: true, hint: "Page 6 (pages-3.pdf)" },
+        { text: "In Loosely-coupled systems, the OS tries to maintain a single, global view of the resources it manages.", correctAnswer: false, hint: "Tightly-coupled does." },
+        { text: "In Multicomputer Operating Systems, the only means of communication is through message passing.", correctAnswer: true, hint: "Page 6 (pages-6.pdf)" },
+        { text: "The problem with switch-based multiprocessors is their limited scalability.", correctAnswer: false, hint: "Switches improve scalability." },
+        { text: "In connection-oriented network it is possible for one packet to take a different route and arrive earlier than the packet sent before it.", correctAnswer: false, hint: "Fixed path." },
+        { text: "With asynchronous communication, the sender is blocked until its message is stored in a local buffer at the receiving host, or actually delivered to the receiver.", correctAnswer: false, hint: "Synchronous blocks." },
+        { text: "In Remote Procedure Call (RPC) message passing is visible to the programmer.", correctAnswer: false, hint: "RPC hides communication." },
+        { text: "Fault-tolerance is the property that enables a system to continue operating properly in the event of the failure of some of its components.", correctAnswer: true, hint: "Standard." },
+        { text: "NOS is a tightly-coupled operating system for multiprocessors and homogeneous multicomputers.", correctAnswer: false, hint: "DOS is tightly-coupled." },
+        { text: "The cost of setting up a page for transferring across a network is higher than the cost of transferring the page itself.", correctAnswer: true, hint: "Page 5 (pages-8.pdf)" },
+        { text: "The problem with bus-based multiprocessors is their limited scalability.", correctAnswer: true, hint: "True." },
+        { text: "In switch-based multicomputer messages between the processors are broadcasted through an interconnection network.", correctAnswer: false, hint: "Routing." },
+        { text: "In Loosely-coupled systems, the OS tries to maintain a single, global view of the resources it manages.", correctAnswer: false, hint: "False." },
+        { text: "Skype and text chat are examples of asynchronous communication.", correctAnswer: false, hint: "Synchronous." },
+        { text: "Blogs and forums are examples of synchronous communication.", correctAnswer: false, hint: "Asynchronous." },
+        { text: "Local-area networks are based on asynchronous communication.", correctAnswer: true, hint: "LANs async." },
+        { text: "Heterogeneous multicomputers tend to be used as parallel systems (working on a single problem).", correctAnswer: false, hint: "Homogeneous used for parallel." },
+        { text: "In connection-oriented protocols no setup in advance is needed to exchange data, the sender transmits the first message when it is ready.", correctAnswer: false, hint: "Connectionless has no setup." },
+        { text: "When the underlying network is fairly reliable it is better to use connection oriented protocols.", correctAnswer: false, hint: "Reliable -> connectionless." },
+        { text: "When the underlying network is inherently unreliable it is better to use a connectionless protocol.", correctAnswer: false, hint: "Unreliable -> connection-oriented." },
+        { text: "In the two-tiered architecture, programs in the application layers are distributed across different machines, clients and servers.", correctAnswer: true, hint: "Classic." },
+        { text: "In the three-tiered architecture, programs in the application layers are distributed across different machines as pure clients and servers.", correctAnswer: false, hint: "Three-tier includes app/db servers." },
+        { text: "In the two-tiered architecture, a server may sometimes acts as a client.", correctAnswer: true, hint: "Yes." },
+        { text: "In the three-tiered architecture, a server may sometimes acts as a client.", correctAnswer: true, hint: "Yes." },
+        { text: "In the vertical distribution architecture, different components of the program in the application layer are placed on different machines.", correctAnswer: true, hint: "Vertical = layering." },
+        { text: "In the horizontal distribution architecture, different components of the program in the application layer are placed on different machines.", correctAnswer: false, hint: "Horizontal replicates." },
+        { text: "In the horizontal distribution architecture, a client or server may be replicated.", correctAnswer: true, hint: "Replication." },
+        { text: "In the vertical distribution architecture, a client or server may be replicated.", correctAnswer: false, hint: "Not focus." },
+        { text: "Middleware sits in the middle between applications and the network operating system.", correctAnswer: true, hint: "Page 3 (pages-4.pdf)" },
+        { text: "Middleware sits in the middle between applications and the distributed operating system.", correctAnswer: false, hint: "On NOS." },
+        { text: "Middleware is an additional layer on the top of NOS implementing general-purpose services.", correctAnswer: true, hint: "Page 3." },
+        { text: "Most middleware is based on some model, or paradigm, for describing distribution and communication.", correctAnswer: true, hint: "Sheet reference." },
+        { text: "In middleware based on treating everything as a file, there is no difference whether a file is local or remote.", correctAnswer: true, hint: "Transparency." },
+        { text: "Middleware based on distributed file systems has proven to be reasonable scalable.", correctAnswer: true, hint: "Yes." },
+        { text: "In middleware based on Remote Procedure Calls (RPCs), a process calls a procedure of which an implementation is located on a remote machine.", correctAnswer: true, hint: "RPC core." },
+        { text: "In middleware based on Remote Procedure Calls (RPCs), the calling process remains unaware of the fact that network communication took place.", correctAnswer: true, hint: "Transparency." },
+        { text: "In middleware based on object orientation, it is possible to invoke objects residing on remote machines in a transparent fashion.", correctAnswer: true, hint: "Distributed objects." },
+        { text: "In middleware based on object orientation, each object implements an interface that hides all the internal details of the object from its users.", correctAnswer: true, hint: "Encapsulation." },
+        { text: "In middleware based on object orientation, the calling process remains unaware of the fact that network communication took place.", correctAnswer: true, hint: "Transparency." },
+        { text: "In middleware based on Remote Procedure Calls (RPCs), it is possible to invoke objects residing on remote machines in a transparent fashion.", correctAnswer: false, hint: "RPC is for procedures." },
+        { text: "In middleware based on Remote Procedure Calls (RPCs), each object implements an interface that hides all the internal details of the object from its users.", correctAnswer: false, hint: "Describes objects." },
+        { text: "In middleware based on object orientation, a process calls a procedure of which an implementation is located on a remote machine.", correctAnswer: true, hint: "Method invocation." },
+        { text: "In middleware based on object orientation, the calling process remains unaware of the fact that network communication took place.", correctAnswer: true, hint: "Yes." },
+        { text: "In middleware based on object orientation, the object interface are available on many other machines.", correctAnswer: true, hint: "Distribution." },
+        { text: "Name services allow entities to be shared and looked up, and are comparable to telephone books.", correctAnswer: true, hint: "Sheet." },
+        { text: "Distributed transactions operate on data that are possibly spread across multiple machines.", correctAnswer: true, hint: "Sheet." }
+    ];
+    
+    // =============================================================
+    // 3. MULTIPLE CHOICE Chapter 2 (Hardware Concepts) - 42 items
+    // =============================================================
+    const mcCh2Data = [
+        { text: "A tightly coupled OS is generally referred to as:", options: ["NOS", "DOS", "COWs", "TCOS", "all of the previous", "none of the previous"], correctIndex: 1, hint: "DOS - Distributed OS" },
+        { text: "The drawback of the NUMA machines is:", options: ["several switching stages", "cache incoherent", "placement of programs and data", "1 and 2", "1 and 4", "none"], correctIndex: 2, hint: "Placement critical." },
+        { text: "In which middleware paradigm all resources treated as files?", options: ["distributed file systems", "RPC", "object orientation", "all", "none"], correctIndex: 0, hint: "DFS" },
+        { text: "Highest degree of transparency?", options: ["multiprocessor OSs", "multicomputer OSs", "network OSs", "middleware", "all", "none"], correctIndex: 0, hint: "DOS full transparency." },
+        { text: "Only one copy of the OS?", options: ["multiprocessor OSs", "multicomputer OSs", "network OSs", "middleware", "all", "none"], correctIndex: 0, hint: "Shared memory." },
+        { text: "Open system example?", options: ["Multiprocessor OSs", "Multicomputer OSs", "Network OSs", "Middleware", "1&2", "3&4"], correctIndex: 5, hint: "NOS and middleware open." },
+        { text: "Manages resources locally?", options: ["Multiprocessor OSs", "Multicomputer OSs", "Network OSs", "Middleware", "1&2", "3&4"], correctIndex: 2, hint: "NOS local management." },
+        { text: "Resources globally managed?", options: ["Multiprocessor OSs", "Multicomputer OSs", "Network OSs", "Middleware", "1&2", "3&4"], correctIndex: 4, hint: "DOS." },
+        { text: "Closed system?", options: ["Multiprocessor OSs", "Multicomputer OSs", "Network OSs", "Middleware", "1&2", "3&4"], correctIndex: 4, hint: "DOS closed." },
+        { text: "Hiding physical distribution means:", options: ["Openness", "Scalability", "Availability", "Transparency", "1&2", "All"], correctIndex: 3, hint: "Transparency." },
+        { text: "MPPs belong to:", options: ["multiprocessor", "Homogeneous Multicomputer", "Heterogeneous", "2&3", "all", "none"], correctIndex: 1, hint: "Homogeneous multicomputer." },
+        { text: "NUMA drawback (again):", options: ["switching stages", "cache incoherent", "placement", "all", "1&2"], correctIndex: 2, hint: "Placement." },
+        { text: "Tightly coupled OS =", options: ["NOS", "DOS", "COWs", "Kernel", "all"], correctIndex: 1, hint: "DOS." },
+        { text: "Goal of middleware?", options: ["virtual shared memory on multicomputer", "virtual tightly-coupled", "virtual shared on loosely-coupled", "all", "none"], correctIndex: 2, hint: "Distribution transparency." },
+        { text: "Goal of DSM?", options: ["virtual shared memory on multicomputer", "virtual tightly-coupled", "shared on loosely", "1&2", "2&3"], correctIndex: 0, hint: "DSM." },
+        { text: "DSM Systems:", options: ["large virtual space", "virtual shared memory", "multicomputer system", "semaphores usable", "all", "none"], correctIndex: 4, hint: "All true." },
+        { text: "COWs belong to:", options: ["Homogeneous Multiprocessor", "Homogeneous Multicomputer", "Heterogeneous", "2&3", "all", "none"], correctIndex: 1, hint: "Homogeneous multicomputer." },
+        { text: "Message passing used in:", options: ["multiprocessor", "multicomputer", "distributed systems", "2&3", "all"], correctIndex: 3, hint: "Multicomputer and DS." },
+        { text: "Single global view OS:", options: ["tightly-coupled", "multiprocessor", "homogeneous multicomputer", "all", "none"], correctIndex: 3, hint: "DOS." },
+        { text: "Data structures in shared memory?", options: ["multiprocessor", "multicomputer", "distributed", "2&3"], correctIndex: 0, hint: "Multiprocessor." },
+        { text: "Data accessible by multiple processors need protection?", options: ["multiprocessor", "multicomputer", "distributed", "2&3"], correctIndex: 0, hint: "Multiprocessor." },
+        { text: "Make CPU count transparent?", options: ["multiprocessor OSs", "multicomputer OSs", "distributed", "1&3"], correctIndex: 0, hint: "Multiprocessor OS." },
+        { text: "Tag variable status of resource:", options: ["Monitors", "Semaphores", "Kernel", "1&2"], correctIndex: 1, hint: "Semaphores." },
+        { text: "Programming construct module variables/procedures:", options: ["Monitors", "Semaphores", "Kernel", "1&2"], correctIndex: 0, hint: "Monitors." },
+        { text: "Data structures cannot be shared via physical memory?", options: ["multiprocessor OSs", "multicomputer OSs", "distributed", "1&3"], correctIndex: 1, hint: "Multicomputer OS." },
+        { text: "Goal virtual shared memory on multicomputer?", options: ["multiprocessor", "multicomputer", "distributed shared systems", "2&3"], correctIndex: 2, hint: "DSM." },
+        { text: "Address space divided into pages?", options: ["multiprocessor", "multicomputer", "distributed shared systems", "2&3"], correctIndex: 2, hint: "DSM." },
+        { text: "DSM page transfer cost determined by:", options: ["setup cost", "amount data", "type", "2&3"], correctIndex: 0, hint: "Setup." },
+        { text: "Two independent processes in same page:", options: ["Monitors", "Semaphores", "Kernel", "false sharing"], correctIndex: 3, hint: "False sharing." },
+        { text: "Cannot share via physical memory (repeat):", options: ["multiprocessor OSs", "multicomputer OSs", "distributed", "1&3"], correctIndex: 1, hint: "Multicomputer." },
+        { text: "Goal virtual shared memory (repeat):", options: ["multiprocessor", "multicomputer", "distributed shared systems", "2&3"], correctIndex: 2, hint: "DSM." },
+        { text: "Address space pages (repeat):", options: ["multiprocessor", "multicomputer", "distributed shared systems", "2&3"], correctIndex: 2, hint: "DSM." },
+        { text: "Page transfer cost (repeat):", options: ["setup", "amount", "type", "2&3"], correctIndex: 0, hint: "Setup." },
+        { text: "False sharing (repeat):", options: ["Monitors", "Semaphores", "Kernel", "false sharing"], correctIndex: 3, hint: "False sharing." },
+        { text: "Everything as file middleware includes:", options: ["documents", "keyboards", "printers", "monitors", "all"], correctIndex: 4, hint: "All I/O." },
+        { text: "Process calls procedure on remote machine:", options: ["everything file", "RPCs", "distributed file systems", "object orientation"], correctIndex: 1, hint: "RPC." },
+        { text: "Invoke objects remotely transparently:", options: ["everything file", "RPCs", "distributed file systems", "object orientation"], correctIndex: 3, hint: "Object orientation." },
+        { text: "Middleware service example:", options: ["Name service", "RPC", "DFS", "object", "all"], correctIndex: 4, hint: "All are middleware." },
+        { text: "Persistence service:", options: ["Persistence", "RPC", "DFS", "object"], correctIndex: 0, hint: "Persistence." },
+        { text: "Distributed transactions service:", options: ["distributed transactions", "RPC", "DFS", "object"], correctIndex: 0, hint: "Transactions." },
+        { text: "Security service:", options: ["security", "RPC", "DFS", "object"], correctIndex: 0, hint: "Security." }
+    ];
+    
+    // =============================================================
+    // 4. MULTIPLE CHOICE Chapter 1 (46 items from solution sheet)
+    // =============================================================
+    const mcCh1Data = [
+        { text: "What is a distributed system?", options: ["Single mainframe", "Collection independent computers appear as single coherent system", "Cluster identical processors", "Network printers"], correctIndex: 1, hint: "Definition." },
+        { text: "Which is a characteristic of a distributed system?", options: ["Users must know resource location", "Easy to expand/scale", "Resources centralized", "All software on one machine"], correctIndex: 1, hint: "Scalability." },
+        { text: "Term hiding distribution of resources?", options: ["Location transparency", "Migration transparency", "Transparency", "Concurrency transparency"], correctIndex: 2, hint: "Transparency umbrella." },
+        { text: "NOT a motivation for distributed systems?", options: ["Resource sharing", "Availability", "Extensibility", "Monolithic design"], correctIndex: 3, hint: "Monolithic is opposite." },
+        { text: "Digital Firm refers to?", options: ["Paper-based", "No digital processes", "Relationships sensing/response", "Legacy systems"], correctIndex: 2, hint: "Digitally enabled." },
+        { text: "Middleware positioned between?", options: ["User programs & hardware", "Higher-level apps & local OS", "OS & hardware", "Network & database"], correctIndex: 1, hint: "Between apps and OS." },
+        { text: "Example where users unaware of orders flow?", options: ["Personal laptop", "Workflow across departments", "Standalone spreadsheet", "Single file server"], correctIndex: 1, hint: "Workflow system." },
+        { text: "WWW as distributed system described as?", options: ["Centralized FS", "Uniform model docs appear regardless server", "Single DB", "Local directory"], correctIndex: 1, hint: "Unified interface." },
+        { text: "Important goal for distributed system?", options: ["Complexity", "Opacity", "Transparency", "Inflexibility"], correctIndex: 2, hint: "Transparency." },
+        { text: "Access transparency means?", options: ["Hiding where data stored", "Hiding differences in data representation and access", "Hiding response time", "Hiding who requests"], correctIndex: 1, hint: "Access methods." },
+        { text: "Migration transparency hides?", options: ["Location of resource", "Resource may move", "Replication", "Concurrency"], correctIndex: 1, hint: "Movement." },
+        { text: "Replication transparency hides?", options: ["Resource replicated", "Resource location", "Resource moves", "Concurrent access"], correctIndex: 0, hint: "Replication." },
+        { text: "Concurrency transparency hides?", options: ["Resource shared by several users", "Resource location", "Resource moves", "Failures"], correctIndex: 0, hint: "Concurrent sharing." },
+        { text: "Persistence transparency hides?", options: ["Whether resource in memory or disk", "Location", "Migration", "Replication"], correctIndex: 0, hint: "Storage medium." },
+        { text: "Open distributed systems emphasize?", options: ["Proprietary protocols", "Standard interoperable protocols", "Single vendor", "Closed design"], correctIndex: 1, hint: "Openness." },
+        { text: "Interoperability means?", options: ["Intermix components from different manufacturers", "Run on any OS", "Scale easily", "Transparent"], correctIndex: 0, hint: "Intermix." },
+        { text: "Portability describes?", options: ["Execute on different systems without modification", "Intermix components", "Scale", "Security"], correctIndex: 0, hint: "Portability." },
+        { text: "Scalability dimensions include?", options: ["Size, geographical, administrative", "Size, temporal, cost", "Geographical, speed, reliability", "None"], correctIndex: 0, hint: "Size, geo, admin." },
+        { text: "In decentralized algorithms, each machine relies on?", options: ["Global info", "Local info", "Central server", "Broadcast"], correctIndex: 1, hint: "Local info." },
+        { text: "Synchronous communication requires?", options: ["Parties online at same time", "Parties can be offline", "Buffering", "No coordination"], correctIndex: 0, hint: "Simultaneous." },
+        { text: "Drawback of replication and caching?", options: ["Consistency problems", "Better performance", "Lower latency", "Higher availability"], correctIndex: 0, hint: "Consistency." },
+        { text: "DNS-like distribution divides?", options: ["Namespace into zones", "Hardware", "Memory", "Processes"], correctIndex: 0, hint: "Zones." },
+        { text: "Asynchronous communication allows?", options: ["Wait for reply", "Do other work while waiting", "Block client", "Ordered responses"], correctIndex: 1, hint: "Non-blocking." },
+        { text: "Which example illustrates DNS distribution?", options: ["Single local server", "Hierarchical DNS with zone servers", "Central database", "Peer-to-peer"], correctIndex: 1, hint: "Hierarchical." },
+        { text: "Easy to configure system from different developers is?", options: ["Interoperability", "Portability", "Flexibility", "Openness"], correctIndex: 3, hint: "Openness." },
+        { text: "Replication transparency should support?", options: ["Access", "Failure", "Location", "Concurrency", "1&3", "All"], correctIndex: 4, hint: "Location + Access." },
+        { text: "Migration transparency should support?", options: ["Access", "Failure", "Location", "Concurrency", "1&3", "All"], correctIndex: 4, hint: "Location+Access." },
+        { text: "Failure transparency should support?", options: ["Access", "Replication", "Location", "Concurrency", "All", "None"], correctIndex: 4, hint: "All." },
+        { text: "Concurrency transparency should support?", options: ["Access", "Replication", "Location", "Failure", "All", "None"], correctIndex: 4, hint: "All." },
+        { text: "Word reading Excel files is example of?", options: ["Portable", "Interoperable", "Access transparent", "Flexible", "All", "None"], correctIndex: 1, hint: "Interoperability." },
+        { text: "Unix widely used on servers/mobiles is example of?", options: ["Portable", "Interoperable", "Access transparent", "Flexible", "All", "None"], correctIndex: 0, hint: "Portability." },
+        { text: "Windows adding modules easily is example of?", options: ["Portable", "Interoperable", "Access transparent", "Flexible", "All", "None"], correctIndex: 3, hint: "Flexibility." },
+        { text: "Distributed system characteristic?", options: ["Differences hidden", "Easy to scale", "Continuously available", "Interact anytime", "2&3", "All"], correctIndex: 5, hint: "All." },
+        { text: "Hiding physical distribution means (repeat)?", options: ["Openness", "Scalability", "Availability", "Transparency", "1&2", "All"], correctIndex: 3, hint: "Transparency." },
+        { text: "NFS same commands local/remote means?", options: ["Access transparency", "Openness", "Location transparency", "Concurrency", "Availability", "All"], correctIndex: 2, hint: "Location transparency." },
+        { text: "NFS same library calls local/remote means?", options: ["Access transparency", "Openness", "Location transparency", "Concurrency", "Availability", "All"], correctIndex: 0, hint: "Access transparency." },
+        { text: "Video-on-demand users not know IP means?", options: ["Access transparency", "Openness", "Location transparency", "Concurrency", "Availability", "All"], correctIndex: 2, hint: "Location." },
+        { text: "Programmers not know physical location of server means?", options: ["Access", "Openness", "Location", "Concurrency", "Availability", "All"], correctIndex: 2, hint: "Location." },
+        { text: "Print service atomic access example of?", options: ["Access", "Openness", "Location", "Concurrency", "Availability", "All"], correctIndex: 3, hint: "Concurrency transparency." },
+        { text: "Video downloaded from replica unaware means?", options: ["Access", "Replication", "Location", "Concurrency", "Availability", "All"], correctIndex: 1, hint: "Replication transparency." },
+        { text: "Easy to manage across organizations means?", options: ["Transparent", "Administratively scalable", "Scalable", "All", "None"], correctIndex: 1, hint: "Admin scalability." },
+        { text: "Moving resources while accessed without notice is?", options: ["Migration transparency", "Location transparency", "Relocation transparency", "All"], correctIndex: 2, hint: "Relocation transparency." },
+        { text: "Goal of middleware (repeat):", options: ["virtual shared memory on multicomputer", "virtual tightly-coupled", "virtual shared on loosely-coupled", "all", "none"], correctIndex: 2, hint: "Middleware transparency." },
+        { text: "Easy to configure from different developers (repeat):", options: ["Interoperability", "Portability", "Flexibility", "All"], correctIndex: 3, hint: "All related." },
+        { text: "System offering services according to standard rules is?", options: ["Transparent", "Open system", "Scalable", "All"], correctIndex: 1, hint: "Open system." },
+        { text: "Moving resources without affecting access is?", options: ["Migration transparency", "Relocation transparency", "Location transparency", "All"], correctIndex: 1, hint: "Relocation." }
+    ];
+    
+    // State arrays
+    let tfCh1Answers = new Array(tfCh1Data.length).fill(null);
+    let tfCh2Answers = new Array(tfCh2Data.length).fill(null);
+    let mcCh2Answers = new Array(mcCh2Data.length).fill(null);
+    let mcCh1Answers = new Array(mcCh1Data.length).fill(null);
+    
+    function updateGlobalStats() {
+        let tf1Correct = 0, tf1Answered = 0;
+        for (let i = 0; i < tfCh1Data.length; i++) {
+            if (tfCh1Answers[i] !== null) { tf1Answered++; if (tfCh1Answers[i] === tfCh1Data[i].correctAnswer) tf1Correct++; }
+        }
+        let tf2Correct = 0, tf2Answered = 0;
+        for (let i = 0; i < tfCh2Data.length; i++) {
+            if (tfCh2Answers[i] !== null) { tf2Answered++; if (tfCh2Answers[i] === tfCh2Data[i].correctAnswer) tf2Correct++; }
+        }
+        let mc2Correct = 0, mc2Answered = 0;
+        for (let i = 0; i < mcCh2Data.length; i++) {
+            if (mcCh2Answers[i] !== null) { mc2Answered++; if (mcCh2Answers[i] === mcCh2Data[i].correctIndex) mc2Correct++; }
+        }
+        let mc1Correct = 0, mc1Answered = 0;
+        for (let i = 0; i < mcCh1Data.length; i++) {
+            if (mcCh1Answers[i] !== null) { mc1Answered++; if (mcCh1Answers[i] === mcCh1Data[i].correctIndex) mc1Correct++; }
+        }
+        const totalAnswered = tf1Answered + tf2Answered + mc2Answered + mc1Answered;
+        const totalCorrect = tf1Correct + tf2Correct + mc2Correct + mc1Correct;
+        const totalQuestions = tfCh1Data.length + tfCh2Data.length + mcCh2Data.length + mcCh1Data.length;
+        document.getElementById("totalScoreDisplay").innerHTML = `📊 Total Score: ${totalCorrect} / ${totalQuestions}`;
+        document.getElementById("totalAnsweredDisplay").innerHTML = `📌 Answered: ${totalAnswered} / ${totalQuestions}`;
+        document.getElementById("tfCh1Count").innerText = `${tfCh1Data.length} questions`;
+        document.getElementById("tfCh2Count").innerText = `${tfCh2Data.length} questions`;
+        document.getElementById("mcCh2Count").innerText = `${mcCh2Data.length} questions`;
+        document.getElementById("mcCh1Count").innerText = `${mcCh1Data.length} questions`;
+        document.getElementById("liveSummary").innerHTML = `📊 TF-Ch1: ${tf1Correct}/${tfCh1Data.length} | TF-Ch2: ${tf2Correct}/${tfCh2Data.length} | MC-Ch2: ${mc2Correct}/${mcCh2Data.length} | MC-Ch1: ${mc1Correct}/${mcCh1Data.length} | Total: ${totalCorrect}/${totalQuestions}`;
+    }
+    
+    function renderSection(containerId, data, answers, isTrueFalse, idxAttr) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        data.forEach((q, idx) => {
+            const selected = answers[idx];
+            let feedbackHtml = (selected !== null) ? 
+                (isTrueFalse ? 
+                    `<div class="feedback ${selected === q.correctAnswer ? 'correct' : 'wrong'}">${selected === q.correctAnswer ? '✓ Correct' : `✗ Incorrect. Right: ${q.correctAnswer ? 'True' : 'False'}. ${q.hint || ''}`}</div>` :
+                    `<div class="feedback ${selected === q.correctIndex ? 'correct' : 'wrong'}">${selected === q.correctIndex ? '✓ Correct' : `✗ Incorrect. Correct: ${q.options[q.correctIndex]}. ${q.hint || ''}`}</div>`
+                ) : `<div class="feedback neutral">⚪ Not answered.</div>`;
+            const card = document.createElement("div");
+            card.className = "question-card";
+            card.setAttribute(idxAttr, idx);
+            let optionsHtml = "";
+            if (isTrueFalse) {
+                optionsHtml = `<div class="options">
+                    <label><input type="radio" name="${containerId}${idx}" value="true" ${selected === true ? 'checked' : ''}> ✅ True</label>
+                    <label><input type="radio" name="${containerId}${idx}" value="false" ${selected === false ? 'checked' : ''}> ❌ False</label>
+                </div>`;
+            } else {
+                optionsHtml = `<div class="options">` + q.options.map((opt, optIdx) => 
+                    `<label><input type="radio" name="${containerId}${idx}" value="${optIdx}" ${selected === optIdx ? 'checked' : ''}> ${escapeHtml(opt)}</label>`
+                ).join('') + `</div>`;
+            }
+            card.innerHTML = `<div class="question-text">${escapeHtml(q.text)}</div>${optionsHtml}<div class="feedback-area">${feedbackHtml}</div>`;
+            const radios = card.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener("change", (e) => {
+                    if (isTrueFalse) {
+                        answers[idx] = e.target.value === "true";
+                    } else {
+                        answers[idx] = parseInt(e.target.value);
+                    }
+                    updateSingleCard(card, idx, data, answers, isTrueFalse);
+                    updateGlobalStats();
+                });
+            });
+            container.appendChild(card);
+        });
+    }
+    
+    function updateSingleCard(card, idx, data, answers, isTrueFalse) {
+        const selected = answers[idx];
+        const q = data[idx];
+        const feedbackDiv = card.querySelector(".feedback-area");
+        if (selected !== null) {
+            if (isTrueFalse) {
+                const isCorrect = (selected === q.correctAnswer);
+                feedbackDiv.innerHTML = `<div class="feedback ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '✓ Correct' : `✗ Incorrect. Right: ${q.correctAnswer ? 'True' : 'False'}. ${q.hint || ''}`}</div>`;
+            } else {
+                const isCorrect = (selected === q.correctIndex);
+                feedbackDiv.innerHTML = `<div class="feedback ${isCorrect ? 'correct' : 'wrong'}">${isCorrect ? '✓ Correct' : `✗ Incorrect. Correct: ${q.options[q.correctIndex]}. ${q.hint || ''}`}</div>`;
+            }
+        } else {
+            feedbackDiv.innerHTML = `<div class="feedback neutral">⚪ Not answered.</div>`;
+        }
+        const radios = card.querySelectorAll('input[type="radio"]');
+        if (isTrueFalse) {
+            const trueRadio = card.querySelector('input[value="true"]');
+            const falseRadio = card.querySelector('input[value="false"]');
+            if (selected === true) trueRadio.checked = true;
+            else if (selected === false) falseRadio.checked = true;
+            else { if(trueRadio) trueRadio.checked = false; if(falseRadio) falseRadio.checked = false; }
+        } else {
+            radios.forEach((radio, i) => { radio.checked = (selected === i); });
+        }
+    }
+    
+    function renderAll() {
+        renderSection("tfCh1Container", tfCh1Data, tfCh1Answers, true, "data-tf1-idx");
+        renderSection("tfCh2Container", tfCh2Data, tfCh2Answers, true, "data-tf2-idx");
+        renderSection("mcCh2Container", mcCh2Data, mcCh2Answers, false, "data-mc2-idx");
+        renderSection("mcCh1Container", mcCh1Data, mcCh1Answers, false, "data-mc1-idx");
+        updateGlobalStats();
+    }
+    
+    function resetAll() {
+        tfCh1Answers.fill(null);
+        tfCh2Answers.fill(null);
+        mcCh2Answers.fill(null);
+        mcCh1Answers.fill(null);
+        renderAll();
+    }
+    
+    function checkAllRefresh() {
+        // Refresh all cards by re-rendering to show correct/wrong status
+        renderAll();
+    }
+    
+    function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m; }); }
+    
+    document.getElementById("resetAllBtn").addEventListener("click", resetAll);
+    document.getElementById("checkAllBtn").addEventListener("click", checkAllRefresh);
+    
+    renderAll();
+</script>
+</body>
+</html>
